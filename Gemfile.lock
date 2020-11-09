@@ -316,8 +316,8 @@ DEPENDENCIES
   devise (~> 4.7)
   factory_bot_rails (~> 6.1)
   faker (~> 2.14)
-  guard (~> 2.16)
-  guard-rspec (~> 4.7)
+  guard
+  guard-rspec
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (~> 1.2)
