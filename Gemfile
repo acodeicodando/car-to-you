@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.5'
+ruby '2.5.8'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
@@ -28,16 +28,16 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
   # custom gems
-  gem "rspec-rails", "~> 4.0"
-  gem "simplecov", "~> 0.19.1"
-  gem "factory_bot_rails", "~> 6.1"
-  gem "database_cleaner-active_record", "~> 1.8"
-  gem "database_cleaner-redis", "~> 1.8"
-  gem "faker", "~> 2.14"
-  gem "solargraph", "~> 0.39.17"
+  gem 'database_cleaner-active_record', '~> 1.8'
+  gem 'database_cleaner-redis', '~> 1.8'
+  gem 'factory_bot_rails', '~> 6.1'
+  gem 'faker', '~> 2.14'
+  gem 'rspec-rails', '~> 4.0'
+  gem 'simplecov', '~> 0.19.1'
+  gem 'solargraph', '~> 0.39.17'
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
@@ -45,8 +45,8 @@ end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -57,12 +57,12 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # custom gems
-gem "redis", "~> 4.2"
-gem "cable_ready", "~> 4.3"
-gem "stimulus_reflex", "~> 3.3"
-gem "simple_calendar", "~> 2.4"
-gem "pg", "~> 1.2"
-gem "devise", "~> 4.7"
+gem 'cable_ready', '~> 4.3'
+gem 'devise', '~> 4.7'
+gem 'pg', '~> 1.2'
+gem 'redis', '~> 4.2'
+gem 'simple_calendar', '~> 2.4'
+gem 'stimulus_reflex', '~> 3.3'
