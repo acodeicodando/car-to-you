@@ -7,9 +7,31 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container h-100">
+      <div class="row mt-4 justify-content-center align-items-center">
+        <div class="col-12">
+          <h2 id="application_title">Car to You
+          <% if user_signed_in? %>
+            <small><%="Hello, #{current_user.name}" %> (<span id="<%="car-allocations"%>">#TODO car allocations</span>)</small>
+          <% end %>
+          </h2>
+          <div class="btn-group mt-2" role="group" aria-label="Application Actions">
+            <%= link_to "Access the Application", new_user_session_path, class:"btn btn-primary" %>
+            <%= link_to "Allocate your Car", root_path, class:"btn btn-secondary" %>
+            <% if user_signed_in? %>
+              <%= link_to "Create Users", '#', class:"btn btn-secondary" %>
+              <%= link_to "Create Cars", '#', class:"btn btn-secondary" %>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-secondary" %>
+            <% end %>
+          </div>
+          <hr />
+        </div>
+      </div>
+      <%= yield %>
+    </div>
   </body>
 </html>
