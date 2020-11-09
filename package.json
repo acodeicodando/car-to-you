@@ -1,5 +1,5 @@
 {
-  "name": "cart_to_you",
+  "name": "car_to_you",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",

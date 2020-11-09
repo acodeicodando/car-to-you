@@ -38,9 +38,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0'
   gem 'simplecov', '~> 0.19.1'
   gem 'solargraph', '~> 0.39.17'
-
-  # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
+  gem "rspec-collection_matchers", "~> 1.2"
 end
 
 group :development do
