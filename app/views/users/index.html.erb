@@ -1,0 +1,6 @@
+<h5>Dashboard of Users</h5>
+
+<%= render partial: 'form', locals: { user: @user } %>
+<div id="users">
+  <%= render partial: "user", collection: @users %>
+</div>
