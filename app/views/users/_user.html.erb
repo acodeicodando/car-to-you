@@ -9,7 +9,7 @@
     </p>
     <p class="card-text lead">
       <%= button_tag 'Edit', type: :button, data: { reflex: "click->UsersReflex#edit", "user-id": user.id }, class: "btn btn-secondary btn-sm" %>
-      <%= button_tag 'Destroy', type: :button, data: { confirm: 'Are you sure?', reflex: "click->UsersReflex#destroy", "user[id]": user.id }, class: "btn btn-danger btn-sm" %>
+      <%= button_tag 'Destroy', type: :button, data: { reflex: "click->UsersReflex#destroy", "user-id": user.id }, class: "btn btn-danger btn-sm" %>
     </p>
   </div>
 </div>
