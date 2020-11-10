@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.order(updated_at: :desc)
+    @users = User.all
     @user = User.new
-  end
-
-  def edit
   end
 end

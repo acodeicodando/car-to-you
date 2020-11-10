@@ -1,4 +1,4 @@
-<%= form_with model: user, data: { reflex: "submit->UsersReflex#submit" } do |f| %>
+<%= form_with model: user, data: { reflex: "submit->UsersReflex#save", "user-id": user.try(:id) } do |f| %>
   <%= render "layouts/error_messages", resource: user %>
   <div class="row">
     <div class="col-md-6">
@@ -19,13 +19,21 @@
     <div class="col-md-6">
       <%= f.label :password, class: 'col-sm-5 col-form-label' %>
       <div class="col-sm-7">
-        <%= f.password_field :password, class: 'form-control', required: true %>
+        <%= f.password_field :password, class: 'form-control' %>
       </div>
     </div>
     <div class="col-md-6">
       <%= f.label :password_confirmation, class: 'col-sm-5 col-form-label' %>
       <div class="col-sm-7">
-        <%= f.password_field :password_confirmation, class: 'form-control', required: true %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-left">
+      <%= f.label "Change password?", class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7 text-left">
+        <%= f.check_box :change_password %>
       </div>
     </div>
   </div>

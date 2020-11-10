@@ -8,9 +8,8 @@
       <small>Created at: <%=time_ago_in_words user.created_at %>, updated at: <%=time_ago_in_words user.updated_at %></small>
     </p>
     <p class="card-text lead">
-      <!-- <button data-reflex="click->Users#edit" data-user-id="<%= user.id %>" class="btn btn-secondary">Edit</button> -->
-      <%= link_to 'Edit', '#', class: "btn btn-secondary btn-sm" %>
-      <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+      <%= button_tag 'Edit', type: :button, data: { reflex: "click->UsersReflex#edit", "user-id": user.id }, class: "btn btn-secondary btn-sm" %>
+      <%= button_tag 'Destroy', type: :button, data: { confirm: 'Are you sure?', reflex: "click->UsersReflex#destroy", "user[id]": user.id }, class: "btn btn-danger btn-sm" %>
     </p>
   </div>
 </div>
