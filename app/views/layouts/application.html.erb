@@ -20,8 +20,8 @@
           <% end %>
           </h2>
           <div class="btn-group mt-2" role="group" aria-label="Application Actions">
-            <%= link_to "Access the Application", new_user_session_path, class:"btn btn-primary" %>
-            <%= link_to "Allocate your Car", root_path, class:"btn btn-secondary" %>
+            <%= link_to "Access the Application", new_user_session_path, class:"btn btn-primary" unless user_signed_in? %>
+            <%= link_to "Allocate your Car", root_path, class:"btn btn-primary" %>
             <% if user_signed_in? %>
               <%= link_to "Dashboard of Users", users_path, class:"btn btn-secondary" %>
               <%= link_to "Dashboard of Cars", '#', class:"btn btn-secondary" %>

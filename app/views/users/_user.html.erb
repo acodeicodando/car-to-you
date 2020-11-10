@@ -1,0 +1,16 @@
+<div class="card mt-2 bg-light" id="user-<%= user.id %>">
+  <div class="card-header">
+    <%= user.name %>
+  </div>
+  <div class="card-body">
+    <p class="card-title text-muted">
+      E-mail: <%=user.email%><br />
+      <small>Created at: <%=time_ago_in_words user.created_at %>, updated at: <%=time_ago_in_words user.updated_at %></small>
+    </p>
+    <p class="card-text lead">
+      <!-- <button data-reflex="click->Users#edit" data-user-id="<%= user.id %>" class="btn btn-secondary">Edit</button> -->
+      <%= link_to 'Edit', '#', class: "btn btn-secondary btn-sm" %>
+      <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+    </p>
+  </div>
+</div>
