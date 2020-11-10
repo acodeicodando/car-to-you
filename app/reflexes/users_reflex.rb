@@ -60,11 +60,11 @@ class UsersReflex < ApplicationReflex
   def destroy
     morph :nothing
     if @user
+      @user.destroy
       cable_ready["users"].remove(
         selector: "#user-#{@user.id}"
       )
       cable_ready.broadcast
-      @user.destroy
     end
   end
 
