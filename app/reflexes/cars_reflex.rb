@@ -98,6 +98,7 @@ class CarsReflex < ApplicationReflex
       selector: "#form-cars",
       html: partial_html
     )
+
     cable_ready.broadcast
   end
 

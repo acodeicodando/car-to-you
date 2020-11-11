@@ -6,21 +6,21 @@
     <p class="card-title text-muted">
       <table class="table">
         <thead>
-          <tr>
-            <th>Brand</th>
-            <th>Model</th>
-            <th>Lisence Plate</th>
-            <th>Year Manufacture</th>
-            <th>Model Year</th>
+          <tr class="d-flex">
+            <th class="col-2">Brand</th>
+            <th class="col-4">Model</th>
+            <th class="col-2">Lisence Plate</th>
+            <th class="col-2">Year Manufacture</th>
+            <th class="col-2">Model Year</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><%=car.brand%></td>
-            <td><%=car.model%></td>
-            <td><%=car.lisence_plate%></td>
-            <td><%=car.year_manufacture%></td>
-            <td><%=car.model_year%></td>
+          <tr class="d-flex">
+            <td class="col-2"><%=car.brand%></td>
+            <td class="col-4"><%=car.model%></td>
+            <td class="col-2"><%=car.lisence_plate%></td>
+            <td class="col-2"><%=car.year_manufacture%></td>
+            <td class="col-2"><%=car.model_year%></td>
           </tr>
         </tbody>
       </table>
