@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, only: :sessions
-  root 'home#index'
+  root 'allocations#index'
 
   resources :users, except: :new
   resources :cars, only: [:index, :show]
