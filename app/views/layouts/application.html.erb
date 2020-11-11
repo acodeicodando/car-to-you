@@ -24,7 +24,7 @@
             <%= link_to "Allocate your Car", root_path, class:"btn btn-primary" %>
             <% if user_signed_in? %>
               <%= link_to "Dashboard of Users", users_path, class:"btn btn-secondary" %>
-              <%= link_to "Dashboard of Cars", '#', class:"btn btn-secondary" %>
+              <%= link_to "Dashboard of Cars", cars_path, class:"btn btn-secondary" %>
               <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"btn btn-secondary" %>
             <% end %>
           </div>

@@ -23,6 +23,7 @@ RSpec.describe Car, type: :model do
         expect(car.errors_on(:car_model_id)).to include("can't be blank")
         expect(car.errors_on(:brand)).to include("can't be blank")
         expect(car.errors_on(:brand_id)).to include("can't be blank")
+        expect(car.errors_on(:name)).to include("can't be blank")
         expect(car.errors_on(:lisence_plate)).to include("can't be blank")
         expect(car.errors_on(:car_model_year)).to include("can't be blank")
         expect(car.errors_on(:car_year_manufacture)).to include("can't be blank")

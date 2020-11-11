@@ -1,0 +1,34 @@
+<div class="card mt-2 bg-light" id="car-<%= car.id %>">
+  <div class="card-header">
+    <%= car.fipe_code %>
+  </div>
+  <div class="card-body">
+    <p class="card-title text-muted">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Lisence Plate</th>
+            <th>Year Manufacture</th>
+            <th>Model Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%=car.brand%></td>
+            <td><%=car.model%></td>
+            <td><%=car.lisence_plate%></td>
+            <td><%=car.year_manufacture%></td>
+            <td><%=car.model_year%></td>
+          </tr>
+        </tbody>
+      </table>
+      <small>Created at: <%=time_ago_in_words car.created_at %>, updated at: <%=time_ago_in_words car.updated_at %></small>
+    </p>
+    <p class="card-text lead">
+      <%= button_tag 'Edit', type: :button, data: { reflex: "click->CarsReflex#edit", "car-id": car.id }, class: "btn btn-secondary btn-sm" %>
+      <%= button_tag 'Destroy', type: :button, data: { reflex: "click->CarsReflex#destroy", "car-id": car.id }, class: "btn btn-danger btn-sm" %>
+    </p>
+  </div>
+</div>

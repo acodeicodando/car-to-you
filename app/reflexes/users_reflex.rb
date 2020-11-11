@@ -44,7 +44,6 @@ class UsersReflex < ApplicationReflex
           html: partial_html
         )
       end
-      cable_ready.broadcast
 
       partial_html = UsersController.render(partial: 'form', locals: { user: User.new })
       cable_ready["users"].inner_html(

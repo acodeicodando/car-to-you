@@ -1,0 +1,10 @@
+<h5>Dashboard of Cars</h5>
+
+<div id="form-cars">
+  <%= render partial: 'form', locals: { car: @car } %>
+</div>
+<hr />
+<h5>List and actions</h5>
+<div id="cars">
+  <%= render partial: "car", collection: @cars %>
+</div>

@@ -1,0 +1,71 @@
+<%= form_with model: car, data: { reflex: "submit->CarsReflex#save", "user-id": car_id(car) } do |f| %>
+  <%= render "layouts/error_messages", resource: car %>
+  <%= f.hidden_field :brand, readonly: true %>
+  <%= f.hidden_field :model, readonly: true %>
+  <%= f.hidden_field :fipe_code, readonly: true %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :brand_id, "Brands", class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7">
+        <%= f.select :brand_id, get_brands, {include_blank: true}, {class: 'form-control', required: true, data: { reflex: "change->CarsReflex#get_models" }} %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.label :model_id, "Models", class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7" id="car-models">
+        <%= render partial: 'models', locals: {car: car, brand_id: car_brand_id(car), models: get_models(car)} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :fipe_id, "Fipe Models", class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7" id="fipe-models">
+        <%= render partial: 'fipe_models', locals: {car: car, brand_id: car_brand_id(car), brand_id: car_brand_id(car), fipe_models: get_fipe_models(car)} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :name, class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7">
+        <%= f.text_field :name, class: 'form-control', readonly: true %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.label :lisence_plate, "Lisence Place", class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7">
+        <%= f.text_field :lisence_plate, class: 'form-control', required: true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :year_manufacture, "Year Manufacture", class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7">
+        <%= f.text_field :year_manufacture, class: 'form-control', readonly: true %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.label :model_year, "Model Year", class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7">
+        <%= f.text_field :model_year, class: 'form-control', readonly: true, required: true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions">
+        <%= f.submit "Save", class: "btn btn-primary btn-save" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div id="test"></div>

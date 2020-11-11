@@ -1,0 +1,5 @@
+<% if defined?(car) %>
+  <%=select :car, :model_id, get_models(car), {selected: car.model_id, include_blank: true}, {class: 'form-control', required: true, data: { brand_id: car.brand_id, reflex: "change->CarsReflex#get_fipe_models" }}%>
+<% else %>
+  <%=select :car, :model_id, models, {include_blank: true }, {class: 'form-control', required: true, data: { brand_id: brand_id, reflex: "change->CarsReflex#get_fipe_models" }}%>
+<% end %>
