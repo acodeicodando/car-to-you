@@ -10,7 +10,7 @@ RSpec.describe Car, type: :model do
 
       it "validate uniq attributes changing one of them" do
         create(:car)
-        car = build(:car, car_year_manufacture: 2015)
+        car = build(:car, year_manufacture: 2015)
         expect(car.valid?).to be_truthy
       end
     end
@@ -19,21 +19,23 @@ RSpec.describe Car, type: :model do
       it "validate presence attributes" do
         car = Car.new
         expect(car.valid?).to be_falsey
-        expect(car.errors_on(:car_model)).to include("can't be blank")
-        expect(car.errors_on(:car_model_id)).to include("can't be blank")
+        expect(car.errors_on(:name)).to include("can't be blank")
+        expect(car.errors_on(:model)).to include("can't be blank")
+        expect(car.errors_on(:model_id)).to include("can't be blank")
         expect(car.errors_on(:brand)).to include("can't be blank")
         expect(car.errors_on(:brand_id)).to include("can't be blank")
-        expect(car.errors_on(:name)).to include("can't be blank")
+        expect(car.errors_on(:fipe_id)).to include("can't be blank")
+        expect(car.errors_on(:fipe_code)).to include("can't be blank")
         expect(car.errors_on(:lisence_plate)).to include("can't be blank")
-        expect(car.errors_on(:car_model_year)).to include("can't be blank")
-        expect(car.errors_on(:car_year_manufacture)).to include("can't be blank")
+        expect(car.errors_on(:model_year)).to include("can't be blank")
+        expect(car.errors_on(:year_manufacture)).to include("can't be blank")
       end
 
       it "validate uniq attributes" do
         create(:car)
         car = build(:car)
         expect(car.valid?).to be_falsey
-        expect(car.errors_on(:car_model)).to include("has already been taken")
+        expect(car.errors_on(:model)).to include("has already been taken")
       end
     end
 

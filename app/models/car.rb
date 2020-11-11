@@ -8,7 +8,7 @@ class Car < ApplicationRecord
   validates :model, uniqueness: {
     scope: [
       :model_id, :brand_id, :name, :lisence_plate,
-      :year_manufacture, :model_year
+      :fipe_id, :year_manufacture, :model_year
       ]
     }
 
