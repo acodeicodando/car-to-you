@@ -7,18 +7,18 @@
       <table class="table">
         <thead>
           <tr class="d-flex">
-            <th class="col-3">Car</th>
-            <th class="col-3">Document</th>
-            <th class="col-3">Start at</th>
-            <th class="col-3">End at</th>
+            <th class="col-6">Car</th>
+            <th class="col-2">Document</th>
+            <th class="col-2">Start at</th>
+            <th class="col-2">End at</th>
           </tr>
         </thead>
         <tbody>
           <tr class="d-flex">
-            <td class="col-3"><%=allocation.car.fipe_code%></td>
-            <td class="col-3"><%=allocation.document%></td>
-            <td class="col-3"><%=allocation.start_at.to_formatted_s(:short)%></td>
-            <td class="col-3"><%=allocation.end_at.to_formatted_s(:short)%></td>
+            <td class="col-6"><%=allocation.car.fipe_code%></td>
+            <td class="col-2"><%=allocation.document%></td>
+            <td class="col-2"><%=allocation.start_at.to_formatted_s(:short)%></td>
+            <td class="col-2"><%=allocation.end_at.to_formatted_s(:short)%></td>
           </tr>
         </tbody>
       </table>
