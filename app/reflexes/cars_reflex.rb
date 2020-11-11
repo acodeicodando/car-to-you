@@ -91,6 +91,16 @@ class CarsReflex < ApplicationReflex
     cable_ready.broadcast
   end
 
+  def edit
+    morph :nothing
+    partial_html = CarsController.render(partial: 'form', locals: { car: @car })
+    cable_ready["cars"].inner_html(
+      selector: "#form-cars",
+      html: partial_html
+    )
+    cable_ready.broadcast
+  end
+
   def save
     morph :nothing
     @car.attributes = car_params

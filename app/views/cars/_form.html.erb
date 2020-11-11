@@ -1,4 +1,4 @@
-<%= form_with model: car, data: { reflex: "submit->CarsReflex#save", "user-id": car_id(car) } do |f| %>
+<%= form_with model: car, data: { reflex: "submit->CarsReflex#save", "car-id": car_id(car) } do |f| %>
   <%= render "layouts/error_messages", resource: car %>
   <%= f.hidden_field :brand, readonly: true %>
   <%= f.hidden_field :model, readonly: true %>
