@@ -1,0 +1,31 @@
+<div class="card mt-2 bg-light" id="allocation-<%= allocation.id %>">
+  <div class="card-header">
+    <%= allocation.car.fipe_code %>
+  </div>
+  <div class="card-body">
+    <p class="card-title text-muted">
+      <table class="table">
+        <thead>
+          <tr class="d-flex">
+            <th class="col-3">Car</th>
+            <th class="col-3">Document</th>
+            <th class="col-3">Start at</th>
+            <th class="col-3">End at</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="d-flex">
+            <td class="col-3"><%=allocation.car.fipe_code%></td>
+            <td class="col-3"><%=allocation.document%></td>
+            <td class="col-3"><%=allocation.start_at.to_formatted_s(:short)%></td>
+            <td class="col-3"><%=allocation.end_at.to_formatted_s(:short)%></td>
+          </tr>
+        </tbody>
+      </table>
+      <small>Created at: <%=time_ago_in_words allocation.created_at %></small>
+    </p>
+    <p class="card-text lead">
+      <%= button_tag 'Destroy', type: :button, data: { reflex: "click->AllocationsReflex#destroy", "allocation-id": allocation.id }, class: "btn btn-danger btn-sm" %>
+    </p>
+  </div>
+</div>

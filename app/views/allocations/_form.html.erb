@@ -1,0 +1,43 @@
+<%= form_with model: allocation, data: { reflex: "submit->AllocationsReflex#save", "car-id": allocation_id(allocation) } do |f| %>
+  <%= render "layouts/error_messages", resource: allocation %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :car_id, "Cars", class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7">
+        <%= f.select :car_id, get_cars, {include_blank: true}, {class: 'form-control', required: true} %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.label :document, class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7">
+        <%= f.text_field :document, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :start_at, "Start at", class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7">
+        <%= f.datetime_field :start_at, class: 'form-control', required: true %>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.label :end_at, "End at", class: 'col-sm-5 col-form-label' %>
+      <div class="col-sm-7">
+        <%= f.datetime_field :end_at, class: 'form-control', required: true %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="actions">
+        <%= f.submit "Save", class: "btn btn-primary btn-save" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div id="test"></div>

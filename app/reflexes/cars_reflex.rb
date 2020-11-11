@@ -70,7 +70,7 @@ class CarsReflex < ApplicationReflex
 
     cable_ready["cars"].set_value(
       selector: "#car_fipe_code",
-      value: "#{fipe_data["name"]} :: #{fipe_data["ano_modelo"]} #{fipe_data["combustivel"]}"
+      value: "#{fipe_data["marca"]} | #{fipe_data["name"]} :: #{fipe_data["ano_modelo"]} #{fipe_data["combustivel"]}"
     )
 
     # Visible fields

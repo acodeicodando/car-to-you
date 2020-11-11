@@ -1,0 +1,12 @@
+<h5>Allocate your Car</h5>
+
+<div id="form-allocations">
+  <%= render partial: 'form', locals: { allocation: @allocation } %>
+</div>
+<% if user_signed_in? %>
+<hr />
+<h5>List and actions</h5>
+<div id="allocations">
+  <%= render partial: "allocation", collection: @allocations %>
+</div>
+<% end %>
