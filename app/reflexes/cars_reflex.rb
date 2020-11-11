@@ -132,6 +132,17 @@ class CarsReflex < ApplicationReflex
     end
   end
 
+  def destroy
+    morph :nothing
+    if @car
+      @car.destroy
+      cable_ready["cars"].remove(
+        selector: "#car-#{@car.id}"
+      )
+      cable_ready.broadcast
+    end
+  end
+
   private
     def car_params
       params.require(:car).permit(
