@@ -1,8 +1,8 @@
 class UniqAllocationValidator < ActiveModel::Validator
   def validate(record)
-    allocation = Allocation.where("start_at >= ? AND end_at <= ? AND car_id = ?", record.start_at, record.end_at, record.car_id)
+    allocation = Allocation.where('((start_at <= ? AND end_at >= ?) OR (start_at <= ? AND end_at >= ?)) AND car_id = ?', record.end_at, record.end_at, record.start_at, record.start_at, record.car_id)
     if allocation.exists?
-      record.errors[:document] << "Already have an allocation for this"
+      record.errors[:start_at] << "Already have an allocation for this"
     end
   end
 end
@@ -23,7 +23,7 @@ class Allocation < ApplicationRecord
 
   validates :document, :start_at, :end_at, presence: true
   validates_associated :car
-  # validates_with UniqAllocationValidator
+  validates_with UniqAllocationValidator
   # validates_with DatesAllocationValidator
 end
 
