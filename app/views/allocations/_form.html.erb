@@ -1,4 +1,4 @@
-<%= form_with model: allocation, data: { reflex: "submit->AllocationsReflex#save", "car-id": allocation_id(allocation) } do |f| %>
+<%= form_with model: allocation, data: { reflex: "submit->AllocationsReflex#save", controller: "allocations", "car-id": allocation_id(allocation) } do |f| %>
   <%= render "layouts/error_messages", resource: allocation %>
   <div class="row">
     <div class="col-md-6">
@@ -40,4 +40,3 @@
     </div>
   </div>
 <% end %>
-<div id="test"></div>

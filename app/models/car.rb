@@ -1,5 +1,6 @@
 class Car < ApplicationRecord
   default_scope { order(created_at: :desc) }
+  has_many :allocations
 
   validates :brand, :brand_id, :model, :model_id,
     :fipe_id, :fipe_code,

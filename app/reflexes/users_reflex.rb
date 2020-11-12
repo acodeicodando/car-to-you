@@ -2,9 +2,9 @@ class UsersReflex < ApplicationReflex
   delegate :current_user, to: :connection
   include CableReady::Broadcaster
   before_reflex do
-    if element.dataset["user-id"].present?
-      @user = User.find(element.dataset["user-id"])
-    elsif user_params[:id].present?
+    if !element.data_user_id.nil?
+      @user = User.find(element.data_user_id)
+    elsif !user_params[:id].nil?
       @user = User.find(user_params[:id])
     else
       @user = User.new
@@ -14,7 +14,7 @@ class UsersReflex < ApplicationReflex
   def edit
     morph :nothing
     partial_html = UsersController.render(partial: 'form', locals: { user: @user })
-    cable_ready["users"].inner_html(
+    cable_ready["users_#{current_user.id}"].inner_html(
       selector: "#form-users",
       html: partial_html
     )
@@ -31,22 +31,21 @@ class UsersReflex < ApplicationReflex
     end
     if @user.errors.blank?
       partial_html = UsersController.render(partial: 'user', locals: { user: @user })
-
       if @user.saved_change_to_attribute?(:id)
-        cable_ready["users"].insert_adjacent_html(
+        cable_ready["general"].insert_adjacent_html(
           position: 'afterbegin',
           selector: '#users',
           html: partial_html
         )
       else
-        cable_ready["users"].outer_html(
+        cable_ready["general"].outer_html(
           selector: "#user-#{@user.id}",
           html: partial_html
         )
       end
 
       partial_html = UsersController.render(partial: 'form', locals: { user: User.new })
-      cable_ready["users"].inner_html(
+      cable_ready["users_#{current_user.id}"].inner_html(
         selector: "#form-users",
         html: partial_html
       )
@@ -60,7 +59,7 @@ class UsersReflex < ApplicationReflex
     morph :nothing
     if @user
       @user.destroy
-      cable_ready["users"].remove(
+      cable_ready["general"].remove(
         selector: "#user-#{@user.id}"
       )
       cable_ready.broadcast
@@ -74,7 +73,7 @@ class UsersReflex < ApplicationReflex
 
     def broadcast_error_messages
       partial_html = UsersController.render(partial: 'form', locals: { user: @user })
-      cable_ready["users"].inner_html(
+      cable_ready["users_#{current_user.id}"].inner_html(
         selector: "#form-users",
         html: partial_html
       )

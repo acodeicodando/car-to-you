@@ -10,8 +10,8 @@ end
 class DatesAllocationValidator < ActiveModel::Validator
   def validate(record)
     if record.start_at.present? && record.end_at.present?
-      if record.start_at <= record.end_at
-        record.errors[:end_at] << "Period invalid, check the dates"
+      if record.start_at >= record.end_at
+        record.errors[:start_at] << "Period invalid, check the dates"
       end
     end
   end
@@ -24,7 +24,7 @@ class Allocation < ApplicationRecord
   validates :document, :start_at, :end_at, presence: true
   validates_associated :car
   validates_with UniqAllocationValidator
-  # validates_with DatesAllocationValidator
+  validates_with DatesAllocationValidator
 end
 
 

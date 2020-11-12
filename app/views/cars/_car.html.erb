@@ -28,7 +28,7 @@
     </p>
     <p class="card-text lead">
       <%= button_tag 'Edit', type: :button, data: { reflex: "click->CarsReflex#edit", "car-id": car.id }, class: "btn btn-secondary btn-sm" %>
-      <%= button_tag 'Destroy', type: :button, data: { reflex: "click->CarsReflex#destroy", "car-id": car.id }, class: "btn btn-danger btn-sm" %>
+      <%= button_tag('Destroy', type: :button, data: { reflex: "click->CarsReflex#destroy", "car-id": car.id }, class: "btn btn-danger btn-sm") if car.allocations.empty? %>
     </p>
   </div>
 </div>

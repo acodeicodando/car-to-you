@@ -1,4 +1,4 @@
-<%= form_with model: user, data: { reflex: "submit->UsersReflex#save", "user-id": user.try(:id) } do |f| %>
+<%= form_with model: user, data: { reflex: "submit->UsersReflex#save", controller: "users", "user-id": user.try(:id) } do |f| %>
   <%= render "layouts/error_messages", resource: user %>
   <div class="row">
     <div class="col-md-6">

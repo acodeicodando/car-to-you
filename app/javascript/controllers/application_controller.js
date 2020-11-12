@@ -22,7 +22,6 @@ export default class extends Controller {
   }
 
   reflexSuccess(element, reflex, noop, reflexId) {
-    // show success message etc...
   }
 
   reflexError(element, reflex, error, reflexId) {
@@ -30,6 +29,5 @@ export default class extends Controller {
   }
 
   afterReflex(element, reflex, noop, reflexId) {
-    // document.body.classList.remove('wait')
   }
 }

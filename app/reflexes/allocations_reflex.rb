@@ -21,25 +21,25 @@ class AllocationsReflex < ApplicationReflex
       partial_html = AllocationsController.render(partial: 'allocation', locals: { allocation: @allocation })
 
       if @allocation.saved_change_to_attribute?(:id)
-        cable_ready["allocations"].insert_adjacent_html(
+        cable_ready["general"].insert_adjacent_html(
           position: 'afterbegin',
           selector: '#allocations',
           html: partial_html
         )
       else
-        cable_ready["allocations"].outer_html(
+        cable_ready["general"].outer_html(
           selector: "#allocation-#{@allocation.id}",
           html: partial_html
         )
       end
 
       partial_html = AllocationsController.render(partial: 'form', locals: { allocation: Allocation.new })
-      cable_ready["allocations"].inner_html(
+      cable_ready["allocations_#{current_user.id}"].inner_html(
         selector: "#form-allocations",
         html: partial_html
       )
 
-      cable_ready["allocations"].outer_html(
+      cable_ready["general"].inner_html(
         selector: "#car-allocations",
         html: Allocation.count
       )
@@ -54,8 +54,13 @@ class AllocationsReflex < ApplicationReflex
     morph :nothing
     if @allocation
       @allocation.destroy
-      cable_ready["allocations"].remove(
+      cable_ready["general"].remove(
         selector: "#allocation-#{@allocation.id}"
+      )
+
+      cable_ready["general"].inner_html(
+        selector: "#car-allocations",
+        html: Allocation.count
       )
       cable_ready.broadcast
     end
@@ -68,7 +73,7 @@ class AllocationsReflex < ApplicationReflex
 
     def broadcast_error_messages
       partial_html = AllocationsController.render(partial: 'form', locals: { allocation: @allocation })
-      cable_ready["allocations"].inner_html(
+      cable_ready["allocations_#{current_user.id}"].inner_html(
         selector: "#form-allocations",
         html: partial_html
       )

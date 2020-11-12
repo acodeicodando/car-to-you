@@ -23,14 +23,14 @@ class CarsReflex < ApplicationReflex
 
   def get_models
     morph :nothing
-    cable_ready["cars"].inner_html(
+    cable_ready["cars_#{current_user.id}"].inner_html(
       selector: "#car-models",
       html: 'Just a moment, collecting the information'
     )
     cable_ready.broadcast
     models = Car.models(@id)
     partial_html = CarsController.render(partial: 'models', locals: { brand_id: @id, models: models})
-    cable_ready["cars"].inner_html(
+    cable_ready["cars_#{current_user.id}"].inner_html(
       selector: "#car-models",
       html: partial_html
     )
@@ -39,14 +39,14 @@ class CarsReflex < ApplicationReflex
 
   def get_fipe_models
     morph :nothing
-    cable_ready["cars"].inner_html(
+    cable_ready["cars_#{current_user.id}"].inner_html(
       selector: "#fipe-models",
       html: 'Just a moment, collecting the information'
     )
     cable_ready.broadcast
     fipe_models = Car.fipe_models(@brand_id, @id)
     partial_html = CarsController.render(partial: 'fipe_models', locals: { brand_id: @brand_id, model_id: @id, fipe_models: fipe_models})
-    cable_ready["cars"].inner_html(
+    cable_ready["cars_#{current_user.id}"].inner_html(
       selector: "#fipe-models",
       html: partial_html
     )
@@ -58,33 +58,33 @@ class CarsReflex < ApplicationReflex
     fipe_data = Car.fipe_data(@brand_id, @model_id, @id)
 
     # Hidden fields
-    cable_ready["cars"].set_value(
+    cable_ready["cars_#{current_user.id}"].set_value(
       selector: "#car_brand",
       value: fipe_data["marca"]
     )
 
-    cable_ready["cars"].set_value(
+    cable_ready["cars_#{current_user.id}"].set_value(
       selector: "#car_model",
       value: fipe_data["name"]
     )
 
-    cable_ready["cars"].set_value(
+    cable_ready["cars_#{current_user.id}"].set_value(
       selector: "#car_fipe_code",
       value: "#{fipe_data["marca"]} | #{fipe_data["name"]} :: #{fipe_data["ano_modelo"]} #{fipe_data["combustivel"]}"
     )
 
     # Visible fields
-    cable_ready["cars"].set_value(
+    cable_ready["cars_#{current_user.id}"].set_value(
       selector: "#car_name",
       value: fipe_data["name"]
     )
 
-    cable_ready["cars"].set_value(
+    cable_ready["cars_#{current_user.id}"].set_value(
       selector: "#car_model_year",
       value: fipe_data["referencia"]
     )
 
-    cable_ready["cars"].set_value(
+    cable_ready["cars_#{current_user.id}"].set_value(
       selector: "#car_year_manufacture",
       value: fipe_data["ano_modelo"]
     )
@@ -94,7 +94,7 @@ class CarsReflex < ApplicationReflex
   def edit
     morph :nothing
     partial_html = CarsController.render(partial: 'form', locals: { car: @car })
-    cable_ready["cars"].inner_html(
+    cable_ready["cars_#{current_user.id}"].inner_html(
       selector: "#form-cars",
       html: partial_html
     )
@@ -110,20 +110,20 @@ class CarsReflex < ApplicationReflex
       partial_html = CarsController.render(partial: 'car', locals: { car: @car })
 
       if @car.saved_change_to_attribute?(:id)
-        cable_ready["cars"].insert_adjacent_html(
+        cable_ready["general"].insert_adjacent_html(
           position: 'afterbegin',
           selector: '#cars',
           html: partial_html
         )
       else
-        cable_ready["cars"].outer_html(
+        cable_ready["general"].outer_html(
           selector: "#car-#{@car.id}",
           html: partial_html
         )
       end
 
       partial_html = CarsController.render(partial: 'form', locals: { car: Car.new })
-      cable_ready["cars"].inner_html(
+      cable_ready["cars_#{current_user.id}"].inner_html(
         selector: "#form-cars",
         html: partial_html
       )
@@ -137,7 +137,7 @@ class CarsReflex < ApplicationReflex
     morph :nothing
     if @car
       @car.destroy
-      cable_ready["cars"].remove(
+      cable_ready["general"].remove(
         selector: "#car-#{@car.id}"
       )
       cable_ready.broadcast
@@ -154,7 +154,7 @@ class CarsReflex < ApplicationReflex
 
     def broadcast_error_messages
       partial_html = CarsController.render(partial: 'form', locals: { car: @car })
-      cable_ready["cars"].inner_html(
+      cable_ready["cars_#{current_user.id}"].inner_html(
         selector: "#form-cars",
         html: partial_html
       )

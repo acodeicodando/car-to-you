@@ -3,6 +3,8 @@ import consumer from "./consumer"
 
 consumer.subscriptions.create("CarsChannel", {
   received(data) {
-    if (data.cableReady) CableReady.perform(data.operations)
+    if (data.cableReady) {
+      CableReady.perform(data.operations)
+    }
   }
 });
