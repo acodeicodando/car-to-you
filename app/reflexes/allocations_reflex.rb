@@ -18,37 +18,33 @@ class AllocationsReflex < ApplicationReflex
     @allocation.attributes = allocation_params
 
     if @allocation.save
-      partial_html = AllocationsController.render(partial: 'allocation', locals: { allocation: @allocation })
 
-      if @allocation.saved_change_to_attribute?(:id)
-        cable_ready["general"].insert_adjacent_html(
-          position: 'afterbegin',
-          selector: '#allocations',
-          html: partial_html
-        )
-      else
-        cable_ready["general"].outer_html(
-          selector: "#allocation-#{@allocation.id}",
-          html: partial_html
+
+      if current_user
+        partial_html = AllocationsController.render(partial: 'allocation', locals: { allocation: @allocation })
+        if @allocation.saved_change_to_attribute?(:id)
+          cable_ready["general"].insert_adjacent_html(
+            position: 'afterbegin',
+            selector: '#allocations',
+            html: partial_html
+          )
+        else
+          cable_ready["general"].outer_html(
+            selector: "#allocation-#{@allocation.id}",
+            html: partial_html
+          )
+        end
+
+        cable_ready["general"].inner_html(
+          selector: "#car-allocations",
+          html: Allocation.count
         )
       end
 
       partial_html = AllocationsController.render(partial: 'form', locals: { allocation: Allocation.new })
-      # unless current_user.nil?
-      #   cable_ready["allocations"].inner_html(
-      #     selector: "#form-allocations",
-      #     html: partial_html
-      #   )
-      # else
-        cable_ready["general"].inner_html(
-          selector: "#form-allocations",
-          html: partial_html
-        )
-      # end
-
       cable_ready["general"].inner_html(
-        selector: "#car-allocations",
-        html: Allocation.count
+        selector: "#form-allocations",
+        html: partial_html
       )
 
       cable_ready.broadcast
