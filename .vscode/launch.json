@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Rails server",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "/Users/rodrigotoledo/.rvm/gems/ruby-2.5.8/bin/rails",
+      "args": [
+        "server"
+      ],
+      "useBundler": true
+    }
+  ]
+}

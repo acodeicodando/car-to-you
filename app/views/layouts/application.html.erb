@@ -16,7 +16,7 @@
         <div class="col-12">
           <h2 id="application_title">Car to You
           <% if user_signed_in? %>
-            <small><%="Hello, #{current_user.name}" %> (<span id="<%="car-allocations"%>">#TODO car allocations</span>)</small>
+            <small><%="Hello, #{current_user.name}" %> (<span id="car-allocations"><%=Allocation.count%></span> allocations)</small>
           <% end %>
           </h2>
           <div class="btn-group mt-2" role="group" aria-label="Application Actions">

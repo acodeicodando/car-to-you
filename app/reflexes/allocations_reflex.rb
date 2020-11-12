@@ -38,6 +38,12 @@ class AllocationsReflex < ApplicationReflex
         selector: "#form-allocations",
         html: partial_html
       )
+
+      cable_ready["allocations"].outer_html(
+        selector: "#car-allocations",
+        html: Allocation.count
+      )
+
       cable_ready.broadcast
     else
       broadcast_error_messages
