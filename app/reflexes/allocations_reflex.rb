@@ -34,10 +34,17 @@ class AllocationsReflex < ApplicationReflex
       end
 
       partial_html = AllocationsController.render(partial: 'form', locals: { allocation: Allocation.new })
-      cable_ready["allocations_#{current_user.id}"].inner_html(
-        selector: "#form-allocations",
-        html: partial_html
-      )
+      # unless current_user.nil?
+      #   cable_ready["allocations"].inner_html(
+      #     selector: "#form-allocations",
+      #     html: partial_html
+      #   )
+      # else
+        cable_ready["general"].inner_html(
+          selector: "#form-allocations",
+          html: partial_html
+        )
+      # end
 
       cable_ready["general"].inner_html(
         selector: "#car-allocations",
@@ -64,7 +71,7 @@ class AllocationsReflex < ApplicationReflex
       )
 
       partial_html = AllocationsController.render(partial: 'form', locals: { allocation: Allocation.new })
-      cable_ready["allocations_#{current_user.id}"].inner_html(
+      cable_ready["general"].inner_html(
         selector: "#form-allocations",
         html: partial_html
       )
@@ -79,7 +86,7 @@ class AllocationsReflex < ApplicationReflex
 
     def broadcast_error_messages
       partial_html = AllocationsController.render(partial: 'form', locals: { allocation: @allocation })
-      cable_ready["allocations_#{current_user.id}"].inner_html(
+      cable_ready["allocations"].inner_html(
         selector: "#form-allocations",
         html: partial_html
       )
