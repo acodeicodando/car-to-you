@@ -140,6 +140,12 @@ class CarsReflex < ApplicationReflex
       cable_ready["general"].remove(
         selector: "#car-#{@car.id}"
       )
+
+      partial_html = CarsController.render(partial: 'form', locals: { car: Car.new })
+      cable_ready["cars_#{current_user.id}"].inner_html(
+        selector: "#form-cars",
+        html: partial_html
+      )
       cable_ready.broadcast
     end
   end
@@ -158,6 +164,7 @@ class CarsReflex < ApplicationReflex
         selector: "#form-cars",
         html: partial_html
       )
+
       cable_ready.broadcast
     end
 end

@@ -13,19 +13,29 @@ import StimulusReflex from 'stimulus_reflex'
  * Learn more at: https://docs.stimulusreflex.com
  */
 export default class extends Controller {
+
   connect() {
     StimulusReflex.register(this)
+    this.errorExplanation = document.getElementById("error-explanation");
+    this.successMessage = document.getElementById("success-message");
   }
 
   beforeReflex(element, reflex, noop, reflexId) {
-    // document.body.classList.add('wait')
+    if (this.successMessage !== undefined) {
+      this.successMessage.style.display = "none";
+    }
   }
 
   reflexSuccess(element, reflex, noop, reflexId) {
+    if (this.successMessage !== undefined && this.errorExplanation !== undefined) {
+      this.successMessage.style.display = "block";
+    }
   }
 
   reflexError(element, reflex, error, reflexId) {
-    // show error message etc...
+    if (this.successMessage !== undefined) {
+      this.successMessage.style.display = "none";
+    }
   }
 
   afterReflex(element, reflex, noop, reflexId) {

@@ -1,5 +1,5 @@
 <%= form_with model: allocation, data: { reflex: "submit->AllocationsReflex#save", controller: "allocations", "car-id": allocation_id(allocation) } do |f| %>
-  <%= render "layouts/error_messages", resource: allocation %>
+  <%= render partial: "layouts/error_messages", locals: {resource: allocation} %>
   <div class="row">
     <div class="col-md-6">
       <%= f.label :car_id, "Cars", class: 'col-sm-5 col-form-label' %>

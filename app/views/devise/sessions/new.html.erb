@@ -8,7 +8,7 @@
         <h4 class="card-title text-muted">Just fill with your data to access</h4>
         <div class="card-text lead">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "my-4 default_label"}) do |f| %>
-            <%= render "layouts/error_messages", resource: resource %>
+            <%= render partial: "layouts/error_messages", locals: {resource: resource} %>
             <div class="row mt-1">
               <div class="col-md-6 text-left">
                 <%= f.label :email, class: 'col-sm-4 col-form-label text-left' %>

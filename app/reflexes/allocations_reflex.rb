@@ -62,6 +62,12 @@ class AllocationsReflex < ApplicationReflex
         selector: "#car-allocations",
         html: Allocation.count
       )
+
+      partial_html = AllocationsController.render(partial: 'form', locals: { allocation: Allocation.new })
+      cable_ready["allocations_#{current_user.id}"].inner_html(
+        selector: "#form-allocations",
+        html: partial_html
+      )
       cable_ready.broadcast
     end
   end

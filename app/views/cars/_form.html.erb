@@ -1,5 +1,5 @@
 <%= form_with model: car, data: { reflex: "submit->CarsReflex#save", controller: "cars", "car-id": car_id(car) } do |f| %>
-  <%= render "layouts/error_messages", resource: car %>
+  <%= render partial: "layouts/error_messages", locals: {resource: car} %>
   <%= f.hidden_field :brand, readonly: true %>
   <%= f.hidden_field :model, readonly: true %>
   <%= f.hidden_field :fipe_code, readonly: true %>

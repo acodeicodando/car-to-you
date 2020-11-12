@@ -62,6 +62,12 @@ class UsersReflex < ApplicationReflex
       cable_ready["general"].remove(
         selector: "#user-#{@user.id}"
       )
+
+      partial_html = UsersController.render(partial: 'form', locals: { user: User.new })
+      cable_ready["users_#{current_user.id}"].inner_html(
+        selector: "#form-users",
+        html: partial_html
+      )
       cable_ready.broadcast
     end
   end
