@@ -1,4 +1,5 @@
 class AllocationsController < ApplicationController
+  include CableReady::Broadcaster
   skip_before_action :authenticate_user!
 
   def index
