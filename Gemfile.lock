@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    action-cable-testing (0.6.1)
+      actioncable (>= 5.0)
     actioncable (6.0.3.4)
       actionpack (= 6.0.3.4)
       nio4r (~> 2.0)
@@ -310,6 +312,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  action-cable-testing (~> 0.6.1)
   bootsnap (>= 1.4.2)
   byebug
   cable_ready (~> 4.3)
@@ -332,7 +335,6 @@ DEPENDENCIES
   simple_calendar (~> 2.4)
   simplecov (~> 0.19.1)
   solargraph (~> 0.39.17)
-  spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
   stimulus_reflex (~> 3.3)
