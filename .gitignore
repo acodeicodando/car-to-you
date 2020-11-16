@@ -76,7 +76,7 @@ zeus.json
 /test
 
 # rspec settings
-.rspec
+# .rspec
 
 doc/app
 
@@ -90,3 +90,5 @@ rails_best_practices_output.html
 
 coverage
 .DS_Store
+yarn-debug.log*
+.yarn-integrity
