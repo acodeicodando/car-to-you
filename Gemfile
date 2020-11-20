@@ -68,3 +68,5 @@ gem 'redis', '~> 4.2'
 gem 'simple_calendar', '~> 2.4'
 gem 'stimulus_reflex', '~> 3.3'
 gem 'faker', '~> 2.14'
+
+gem "rspec-mocks", "~> 3.10"
