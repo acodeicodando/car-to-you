@@ -1,19 +1,20 @@
 default: &default
-  adapter: postgresql
+  adapter: mysql2
   encoding: unicode
-  database: car_to_you
-  username: rtoledo
-  password: 123456
-  host: localhost
+  database: <%= ENV['DATABASE'] %>
+  username: <%= ENV['USERNAME'] %>
+  password: <%= ENV['PASSWORD'] %>
+  host: <%= ENV['HOST'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
+  database: <%= ENV['DATABASE'] %>_development
 
 test:
   <<: *default
-  database: car_to_you_test
+  database: <%= ENV['DATABASE'] %>_test
 
 production:
   url: <%= ENV['DATABASE_URL'] %>

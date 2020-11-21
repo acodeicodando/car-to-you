@@ -10,7 +10,8 @@
       "args": [
         "server"
       ],
-      "useBundler": true
+      "useBundler": true,
+      "ruby.format": "rubocop"
     }
   ]
 }
