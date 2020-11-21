@@ -41,7 +41,7 @@ group :test do
   gem 'rspec-rails', '~> 4.0'
   gem 'simplecov', '~> 0.19.1'
   gem 'solargraph', '~> 0.39.17'
-  gem "rspec-collection_matchers", "~> 1.2"
+  gem "rspec-mocks", "~> 3.10"
 end
 
 group :development do
@@ -64,10 +64,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'cable_ready', '~> 4.3'
 gem 'devise', '~> 4.7'
 gem 'faker', '~> 2.14'
-gem 'pg', '~> 1.2'
+# gem 'pg', '~> 1.2'
 gem 'redis', '~> 4.2'
 gem 'simple_calendar', '~> 2.4'
 gem 'stimulus_reflex', '~> 3.3'
-gem 'faker', '~> 2.14'
-
-gem "rspec-mocks", "~> 3.10"
