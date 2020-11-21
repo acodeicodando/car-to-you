@@ -11,9 +11,7 @@ gem 'webpacker', '~> 4.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'mysql', '~> 2.9'
   gem 'rubocop'
-  gem 'ruby-debug-ide'
 end
 
 group :test do
@@ -48,7 +46,10 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'cable_ready', '~> 4.3'
 gem 'devise', '~> 4.7'
 gem 'faker', '~> 2.14'
-# gem 'pg', '~> 1.2'
 gem 'redis', '~> 4.2'
 gem 'simple_calendar', '~> 2.4'
 gem 'stimulus_reflex', '~> 3.3'
+
+gem "mysql2", "~> 0.5.3"
+
+gem "dotenv-rails", "~> 2.7"

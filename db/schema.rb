@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_11_11_183451) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "allocations", force: :cascade do |t|
+  create_table "allocations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "car_id", null: false
     t.string "document"
     t.datetime "start_at"
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_183451) do
     t.index ["car_id"], name: "index_allocations_on_car_id"
   end
 
-  create_table "cars", force: :cascade do |t|
+  create_table "cars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "brand"
     t.string "brand_id"
     t.string "model"
@@ -40,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_183451) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
