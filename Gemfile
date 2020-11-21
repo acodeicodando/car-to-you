@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.8'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use Puma as the app server
@@ -27,6 +25,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+  # gem 'mysql', '~> 2.9'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'sqlite3', '~> 1.4'
@@ -38,6 +37,7 @@ group :test do
   gem 'database_cleaner-active_record', '~> 1.8'
   gem 'database_cleaner-redis', '~> 1.8'
   gem 'factory_bot_rails', '~> 6.1'
+  gem 'rspec-collection_matchers', '~> 1.2'
   gem 'rspec-rails', '~> 4.0'
   gem 'simplecov', '~> 0.19.1'
   gem 'solargraph', '~> 0.39.17'
@@ -63,6 +63,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # custom gems
 gem 'cable_ready', '~> 4.3'
 gem 'devise', '~> 4.7'
+gem 'faker', '~> 2.14'
 gem 'pg', '~> 1.2'
 gem 'redis', '~> 4.2'
 gem 'simple_calendar', '~> 2.4'

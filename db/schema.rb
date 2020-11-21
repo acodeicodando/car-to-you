@@ -12,8 +12,11 @@
 
 ActiveRecord::Schema.define(version: 2020_11_11_183451) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "allocations", force: :cascade do |t|
-    t.integer "car_id", null: false
+    t.bigint "car_id", null: false
     t.string "document"
     t.datetime "start_at"
     t.datetime "end_at"
