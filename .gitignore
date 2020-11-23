@@ -92,3 +92,5 @@ coverage
 .DS_Store
 yarn-debug.log*
 .yarn-integrity
+Gemfile.lock
+yarn.lock

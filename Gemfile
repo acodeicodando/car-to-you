@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
+git_source(:github) { |_repo| 'https://github.com/#{repo}.git' }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'jbuilder', '~> 2.7'
+gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+# gem 'jbuilder', '~> 2.7'
 gem 'puma', '~> 4.1'
-gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 
 group :development, :test do
@@ -50,6 +49,6 @@ gem 'redis', '~> 4.2'
 gem 'simple_calendar', '~> 2.4'
 gem 'stimulus_reflex', '~> 3.3'
 
-gem "mysql2", "~> 0.5.3"
+gem 'mysql2', '~> 0.5.3'
 
-gem "dotenv-rails", "~> 2.7"
+gem 'dotenv-rails', '~> 2.7'
